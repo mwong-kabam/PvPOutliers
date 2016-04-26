@@ -110,7 +110,7 @@ ORDER EACH BY 1,2))
 
 GROUP EACH BY 1'''
 	
-	df = pd.read_gbq(query,project_id='mcoc-bi')
+	df=gbq_large.read_gbq(query,project_id='mcoc-bi',destination_table='datascience_view.outliers_tmp')
 	print('Finished BigQuery Load')
 	df = df.dropna(how='all',subset=['bin1_winrate', 'bin2_winrate', 'bin3_winrate', 'bin4_winrate', 'bin5_winrate', 'bin6_winrate',
 		'bin1_duration_win', 'bin2_duration_win', 'bin3_duration_win', 'bin4_duration_win', 'bin5_duration_win', 'bin6_duration_win'])
