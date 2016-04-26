@@ -1,16 +1,10 @@
 from __future__ import division
 import pandas as pd
 import numpy as np
-import seaborn as sns
-sns.set_context('talk')
-sns.set_style('darkgrid')
-import matplotlib.pyplot as plt
-from IPython.display import clear_output
 import datetime
 import scipy as sc
 import time
 import datetime
-from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm
 import gbq_large
