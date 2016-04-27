@@ -12,6 +12,7 @@ import subprocess
 import cPickle
 
 def main():
+	print('Querying ...')
 	query = '''SELECT uid, MAX(bin1_winrate) bin1_winrate, MAX(bin2_winrate) bin2_winrate, 
 	MAX(bin3_winrate) bin3_winrate, MAX(bin4_winrate) bin4_winrate, MAX(bin5_winrate) bin5_winrate, 
 	MAX(bin6_winrate) bin6_winrate,
