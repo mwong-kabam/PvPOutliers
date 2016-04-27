@@ -123,7 +123,7 @@ GROUP EACH BY 1'''
 	print('Training Model')
 	clf2.fit(df_train_small)
 	with open('trained_outliers.pkl', 'wb') as fid:
-    	cPickle.dump(clf2, fid) 
+		cPickle.dump(clf2, fid) 
 	
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ import subprocess
 def main():
 
 	with open('trained_outliers.pkl', 'rb') as fid:
-    clf2 = cPickle.load(fid)
+    	clf2 = cPickle.load(fid)
 	print('Predicting Outliers')
 	p=clf2.predict(df_train_T)
 	d=clf2.decision_function(df_train_T)
