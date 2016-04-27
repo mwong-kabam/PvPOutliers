@@ -158,7 +158,7 @@ GROUP EACH BY 1'''
 	df_write.to_csv('outliers.csv',index=False)
 	table_write = 'mcoc-bi:datascience_view.pvp_outliers'+ date.strftime('%Y%m%d')
 	print('Upload Outlier Data to BigQuery')
-	subprocess.call('''~/google-cloud-sdk/bin/bq load --source_format=CSV --skip_leading_rows=1 ''' +  table_write + ''' outliers.csv uid_i:integer,bin1_winrate_f:float,bin2_winrate_f:float,bin3_winrate_f:float,bin4_winrate_f:float,bin5_winrate_f:float,bin6_winrate_f:float,bin1_duration_win_f:float,bin2_duration_win_f:float,bin3_duration_win_f:float,bin4_duration_win_f:float,bin5_duration_win_f:float,bin6_duration_win_f:float,distance_f:float,priority_f:float,ts_t:timestamp''', shell=True)
+	subprocess.call('''bq load --source_format=CSV --skip_leading_rows=1 ''' +  table_write + ''' outliers.csv uid_i:integer,bin1_winrate_f:float,bin2_winrate_f:float,bin3_winrate_f:float,bin4_winrate_f:float,bin5_winrate_f:float,bin6_winrate_f:float,bin1_duration_win_f:float,bin2_duration_win_f:float,bin3_duration_win_f:float,bin4_duration_win_f:float,bin5_duration_win_f:float,bin6_duration_win_f:float,distance_f:float,priority_f:float,ts_t:timestamp''', shell=True)
 	
 
 if __name__ == "__main__":
