@@ -14,8 +14,8 @@ import math
 
 def main():
 	print('Querying ...')
-	start_date = datetime.date(2016, 1, 1)
-	for i in range(116): 
+	start_date = datetime.date(2016, 3, 4)
+	for i in range(53): 
    
 	    search_date = start_date + datetime.timedelta(-5) 
 	    
