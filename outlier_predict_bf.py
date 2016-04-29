@@ -138,9 +138,9 @@ def main():
 	    df = df.dropna(how='all',subset=['bin1_winrate', 'bin2_winrate', 'bin3_winrate', 'bin4_winrate', 'bin5_winrate', 'bin6_winrate',
 	                       'bin1_duration_win', 'bin2_duration_win', 'bin3_duration_win', 'bin4_duration_win', 'bin5_duration_win', 'bin6_duration_win'])
 	    df_train = df.drop(['uid'],axis=1)
-	    df_train = df_train.apply(lambda x: x.fillna(x.mean()),axis=0)
+	    df_train = df_train.apply(lambda x: x.fillna(0) if math.isnan(x.mean()) else x.fillna(x.mean())  ,axis=0)
 	    df_train_T=df_train.apply(lambda x:StandardScaler().fit_transform(x))
-	    with open('PvpOutliers/trained_outliers.pkl', 'rb') as fid:
+	    with open('trained_outliers.pkl', 'rb') as fid:
 	        clf2 = cPickle.load(fid)
 	    print('Predicting Outliers')
 	    p=clf2.predict(df_train_T)
@@ -182,6 +182,6 @@ def main():
 	    print('Upload Outlier Data to BigQuery')
 	    subprocess.call('''bq load --source_format=CSV --skip_leading_rows=1 ''' +  table_write + ''' outliersbf.csv uid_i:integer,bin1_winrate_f:float,bin2_winrate_f:float,bin3_winrate_f:float,bin4_winrate_f:float,bin5_winrate_f:float,bin6_winrate_f:float,bin1_duration_win_f:float,bin2_duration_win_f:float,bin3_duration_win_f:float,bin4_duration_win_f:float,bin5_duration_win_f:float,bin6_duration_win_f:float,distance_f:float,priority_f:float,ts_t:timestamp''', shell=True)
 	    start_date = start_date + datetime.timedelta(1)
-	    
+
 if __name__ == "__main__":
 	main()
