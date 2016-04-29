@@ -10,6 +10,7 @@ from sklearn import svm
 import gbq_large
 import subprocess
 import cPickle
+import math
 
 def main():
 	print('Querying ...')
